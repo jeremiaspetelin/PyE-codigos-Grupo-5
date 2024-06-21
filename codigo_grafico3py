@@ -1,0 +1,24 @@
+# prompt: # prompt: En base al archivo study_performance.csv genérame un gráfico donde muestre la cantidad de estudiantes que se prepararon para la evaluación, discriminado por Raza. Usando las columnas 'race_ethnicity' y 'test_preparation_course''. Cambiando el color none por naranaja y completed en azul.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the data from the CSV file
+file_path = 'study_performance.csv'
+df = pd.read_csv(file_path)
+
+# Create a countplot for test preparation course by race/ethnicity
+plt.figure(figsize=(12, 8))
+sns.countplot(x='race_ethnicity', hue='test_preparation_course', data=df, palette={'none': 'darkorange', 'completed': '#3274a1'})
+
+# Add a title and labels to the plot
+plt.title('Cantidad de Estudiantes que se Prepararon para la Evaluación por Raza/Etnia')
+plt.xlabel('Raza/Etnia')
+plt.ylabel('Cantidad de Estudiantes')
+
+# Rotate x-axis labels for better readability
+plt.xticks(rotation=45, ha='right')
+
+# Display the plot
+plt.show()
